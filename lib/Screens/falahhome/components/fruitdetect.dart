@@ -67,11 +67,14 @@ class _Fruitdetc extends State<Fruitdetc> {
           "\n\n";
       val = res["confidence"] as double;
       fruit = res["label"];
+      if (val > 1) {
+        Navigator.of(context).pop(fruit);
+      }
     });
     setState(() {
       affiche;
     });
-    Navigator.of(context).pop(affiche);
+    //Navigator.of(context).pop(affiche);
     isWorking = false;
   }
 

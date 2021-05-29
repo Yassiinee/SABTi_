@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:sabti/components/rounded_button.dart';
 import 'package:sabti/components/rounded_input_field_fallah.dart';
 import '../components/fruitdetect.dart';
 
@@ -63,19 +64,19 @@ class _AddProd extends State<AddProd> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('make a choise'),
+            title: Text('أختار'),
             content: SingleChildScrollView(
               child: ListBody(
                 children: [
                   GestureDetector(
-                    child: Text('Gallary'),
+                    child: Text('الصور'),
                     onTap: () {
                       _openGallary(context);
                     },
                   ),
                   Padding(padding: EdgeInsets.all(8.0)),
                   GestureDetector(
-                    child: Text('camera'),
+                    child: Text('كاميرا'),
                     onTap: () {
                       _openCamera(context);
                     },
@@ -130,31 +131,15 @@ class _AddProd extends State<AddProd> {
             ),
             TextField(
               decoration: InputDecoration(
+                  filled: true,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    // borderSide: BorderSide.none,
+                  ),
                   labelText: 'المنتوج',
                   fillColor: Theme.of(context).primaryColor),
               controller: titleController,
               onSubmitted: (_) => submitData,
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            TextField(
-              decoration: InputDecoration(labelText: 'الثمن'),
-              controller: prixController,
-              onSubmitted: (_) => submitData,
-              keyboardType: TextInputType.number,
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            TextField(
-              decoration: InputDecoration(labelText: 'الكمية'),
-              controller: qteController,
-              onSubmitted: (_) => submitData,
-              keyboardType: TextInputType.number,
-            ),
-            SizedBox(
-              height: 10,
             ),
             Container(
               height: 70,
@@ -163,13 +148,13 @@ class _AddProd extends State<AddProd> {
                   Expanded(
                     child: Text(
                       result == ""
-                          ? 'choose product'
+                          ? 'لم يتم إختيار المنتوج'
                           // ignore: unnecessary_brace_in_string_interps
                           : '${result}',
                     ),
                   ),
                   // ignore: deprecated_member_use
-                  FlatButton(
+                  RaisedButton(
                       onPressed: () {
                         _fruitdetc(context);
                       },
@@ -180,13 +165,48 @@ class _AddProd extends State<AddProd> {
                 ],
               ),
             ),
+            SizedBox(
+              height: 10,
+            ),
+            TextField(
+              decoration: InputDecoration(
+                  filled: true,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    // borderSide: BorderSide.none,
+                  ),
+                  labelText: 'الثمن',
+                  fillColor: Theme.of(context).primaryColor),
+              controller: prixController,
+              onSubmitted: (_) => submitData,
+              keyboardType: TextInputType.number,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            TextField(
+              decoration: InputDecoration(
+                  filled: true,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  labelText: 'الكمية',
+                  fillColor: Theme.of(context).primaryColor),
+              controller: qteController,
+              onSubmitted: (_) => submitData,
+              keyboardType: TextInputType.number,
+            ),
+            SizedBox(
+              height: 40,
+            ),
+
             Container(
               height: 70,
               child: Row(
                 children: [
-                  Center(
+                  Expanded(
                     child: _imageFile == null
-                        ? Text('aucune date choisi')
+                        ? Text('لم يتم اختيار أي صورة')
                         : Image.file(
                             _imageFile,
                             width: 100,
@@ -194,25 +214,28 @@ class _AddProd extends State<AddProd> {
                           ),
                   ),
                   // ignore: deprecated_member_use
-                  FlatButton(
+                  RaisedButton(
                       onPressed: () {
                         _showChioDiloag(context);
                       },
                       child: Text(
-                        'photo',
+                        'اختار الصورة',
                         style: TextStyle(color: Theme.of(context).primaryColor),
                       ))
                 ],
               ),
             ),
+            SizedBox(
+              height: 40,
+            ),
+            // ignore: deprecated_member_use
             Center(
-              // ignore: deprecated_member_use
-              child: RaisedButton(
-                onPressed: submitData,
-                child: Text('أضف المنتوج'),
-                color: Theme.of(context).primaryColor,
-                textColor: Theme.of(context).textTheme.button.color,
-              ),
+              child: RoundedButton(
+                  text: "أضف المنتوج",
+                  fontSize: 20.0,
+                  press: () {
+                    submitData();
+                  }),
             ),
           ],
         ),
