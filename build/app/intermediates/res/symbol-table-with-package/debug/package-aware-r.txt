@@ -11,6 +11,7 @@ attr fontStyle
 attr fontVariationSettings
 attr fontWeight
 attr ttcIndex
+color background_color
 color notification_action_color_filter
 color notification_icon_bg_color
 color ripple_material_light
@@ -37,6 +38,7 @@ dimen notification_small_icon_size_as_large
 dimen notification_subtext_size
 dimen notification_top_pad
 dimen notification_top_pad_large_text
+drawable corner
 drawable launch_background
 drawable notification_action_background
 drawable notification_bg
@@ -50,6 +52,8 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable sabti
+drawable toast_bg
 id accessibility_action_clickable_span
 id accessibility_custom_action_0
 id accessibility_custom_action_1
@@ -125,7 +129,9 @@ layout notification_template_custom_big
 layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout toast_custom
 mipmap ic_launcher
+mipmap icon
 string status_bar_notification_info_overflow
 style LaunchTheme
 style TextAppearance_Compat_Notification
@@ -140,3 +146,4 @@ styleable FontFamily fontProviderAuthority fontProviderCerts fontProviderFetchSt
 styleable FontFamilyFont android_font android_fontWeight android_fontStyle android_ttcIndex android_fontVariationSettings font fontStyle fontVariationSettings fontWeight ttcIndex
 styleable GradientColor android_startColor android_endColor android_type android_centerX android_centerY android_gradientRadius android_tileMode android_centerColor android_startX android_startY android_endX android_endY
 styleable GradientColorItem android_color android_offset
+xml flutter_image_picker_file_paths

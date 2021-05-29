@@ -17,8 +17,9 @@ class Body extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              "WELCOME TO SABTi",
-              style: TextStyle(fontWeight: FontWeight.bold),
+              //"WELCOME TO SABTi"
+              "مرحبا بيك في صابتي",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
             ),
             SizedBox(height: size.height * 0.05),
             Image.asset(
@@ -27,7 +28,8 @@ class Body extends StatelessWidget {
             ),
             SizedBox(height: size.height * 0.05),
             RoundedButton(
-              text: "LOGIN",
+              text: "تسجيل الدخول",
+              fontSize: 20.0,
               press: () {
                 Navigator.push(
                   context,
@@ -40,7 +42,8 @@ class Body extends StatelessWidget {
               },
             ),
             RoundedButton(
-              text: "SIGN UP",
+              text: "سجل معنا",
+              fontSize: 20.0,
               color: kPrimaryLightColor,
               textColor: Colors.black,
               press: () {

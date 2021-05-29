@@ -4,6 +4,7 @@ import 'package:sabti/constants.dart';
 class RoundedButton extends StatelessWidget {
   final String text;
   final Function press;
+  final double fontSize;
   final Color color, textColor;
   const RoundedButton({
     Key key,
@@ -11,6 +12,7 @@ class RoundedButton extends StatelessWidget {
     this.press,
     this.color = kPrimaryColor,
     this.textColor = Colors.white,
+    this.fontSize,
   }) : super(key: key);
 
   @override
@@ -27,7 +29,10 @@ class RoundedButton extends StatelessWidget {
           onPressed: press,
           child: Text(
             text,
-            style: TextStyle(color: textColor),
+            style: TextStyle(
+              color: textColor,
+              fontSize: fontSize,
+            ),
           ),
         ),
       ),
