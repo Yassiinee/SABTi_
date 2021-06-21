@@ -16,7 +16,7 @@ class MyBottomNavBar extends StatelessWidget {
         right: kDefaultPadding * 2,
         bottom: kDefaultPadding,
       ),
-      height: 80,
+      height: 60,
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
@@ -31,7 +31,7 @@ class MyBottomNavBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           IconButton(
-            icon: SvgPicture.asset("assets/icons/location.svg"),
+            icon: SvgPicture.asset("assets/icons/home.svg"),
             onPressed: () {},
           ),
           IconButton(

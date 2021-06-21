@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../falahhome/components/header_with_seachbox.dart';
@@ -20,8 +22,7 @@ class _FalahHomeState extends State<FalahHome> {
     String txtitle,
     double txprix,
     double txquantite,
-    String tximage,
-    String txlocation,
+    File tximage,
   ) {
     final newtx = Product(
       id: DateTime.now().toString(),
@@ -29,7 +30,6 @@ class _FalahHomeState extends State<FalahHome> {
       quantite: txquantite,
       image: tximage,
       prix: txprix,
-      location: txlocation,
     );
     setState(() {
       prod.add(newtx);

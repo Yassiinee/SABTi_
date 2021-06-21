@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:sabti/Screens/Signup/components/body.dart';
 
 class SignUpScreen extends StatelessWidget {
+  String role;
+  SignUpScreen(this.role);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Body(),
+      body: Body(role),
     );
   }
 }

@@ -1,136 +1,66 @@
 import 'package:flutter/material.dart';
-import 'package:sabti/screens/details/details_screen.dart';
+import 'package:http/http.dart' as http;
+import 'dart:async';
+import 'dart:convert';
 
 import '../../../constants.dart';
 
-class RecomendsPlants extends StatelessWidget {
-  const RecomendsPlants({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: <Widget>[
-          RecomendPlantCard(
-            image: "assets/images/image_1.png",
-            title: "طماطم",
-            country: "المنستير",
-            price: 1.5,
-            press: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => DetailsScreen(),
-                ),
-              );
-            },
-          ),
-          RecomendPlantCard(
-            image: "assets/images/img.png",
-            title: "رمان",
-            country: "سوسة",
-            price: 3,
-            press: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => DetailsScreen(),
-                ),
-              );
-            },
-          ),
-          RecomendPlantCard(
-            image: "assets/images/image_2.png",
-            title: "تفاح",
-            country: "صفاقس",
-            price: 4,
-            press: () {},
-          ),
-        ],
-      ),
-    );
-  }
+void showevents() {
+  runApp(
+    MaterialApp(home: EventsSpecial()),
+  );
 }
 
-class RecomendPlantCard extends StatelessWidget {
-  const RecomendPlantCard({
-    Key key,
-    this.image,
-    this.title,
-    this.country,
-    this.price,
-    this.press,
-  }) : super(key: key);
+class EventsSpecial extends StatefulWidget {
+  @override
+  _EventsPageState createState() => _EventsPageState();
+}
 
-  final String image, title, country;
-  final double price;
-  final Function press;
+class _EventsPageState extends State<EventsSpecial> {
+  Map data;
+  List events;
+
+  // getEvents() async {
+  //   http.Response response = await http.get('http://localhost:4000/api/events');
+  //   data = json.decode(response.body);
+  //   setState(() {
+  //     events = data['summary'];
+  //   });
+  // }
 
   @override
+  initState() {
+    super.initState();
+    //getEvents();
+  }
+
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Container(
-      margin: EdgeInsets.only(
-        left: kDefaultPadding,
-        top: kDefaultPadding / 2,
-        bottom: kDefaultPadding * 2.5,
-      ),
-      width: size.width * 0.4,
-      child: Column(
-        children: <Widget>[
-          Image.asset(image),
-          GestureDetector(
-            onTap: press,
-            child: Container(
-              padding: EdgeInsets.all(kDefaultPadding / 2),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(10),
-                  bottomRight: Radius.circular(10),
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    offset: Offset(0, 10),
-                    blurRadius: 50,
-                    color: kPrimaryColor.withOpacity(0.23),
-                  ),
-                ],
+    return SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            Container(
+              margin: EdgeInsets.only(
+                left: kDefaultPadding,
+                top: kDefaultPadding / 2,
+                bottom: kDefaultPadding * 2.5,
               ),
-              child: Row(
-                children: <Widget>[
-                  RichText(
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                            text: "$title\n".toUpperCase(),
-                            style: Theme.of(context).textTheme.button),
-                        TextSpan(
-                          text: "$country".toUpperCase(),
-                          style: TextStyle(
-                            color: kPrimaryColor.withOpacity(0.5),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Spacer(),
-                  Text(
-                    '\$$price',
-                    style: Theme.of(context)
-                        .textTheme
-                        .button
-                        .copyWith(color: kPrimaryColor),
-                  )
-                ],
-              ),
-            ),
-          )
-        ],
-      ),
-    );
+              width: size.width * 0.4,
+              child: Text('ما عناش مناسبات توا'),
+            )
+          ],
+        )
+        //ListView.builder(
+        //itemCount: events == null ? 0 : events.length,
+        //itemBuilder: (BuildContext context, int index) {
+        //return Card(
+        //child: Row(
+        //children: [Text("${events[index]}")],
+        //),
+        //);
+        //},
+        //),
+        );
   }
 }

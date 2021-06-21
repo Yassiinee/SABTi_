@@ -17,9 +17,8 @@ class _AddProd extends State<AddProd> {
   final titleController = TextEditingController();
   final prixController = TextEditingController();
   final qteController = TextEditingController();
-  final String selectpic = 'salut';
-  final String selectlocation = 'salut';
-  File _imageFile;
+  File selectpic;
+  File imageFile;
   String result = "";
   final picker = ImagePicker();
 
@@ -31,11 +30,10 @@ class _AddProd extends State<AddProd> {
     //if (titleenter.isEmpty || prixenter <= 0 || qteenter <= 0) {
     // return;}
     widget.addNew(
-      titleController.text,
+      titleController.text = result,
       double.parse(prixController.text),
       double.parse(qteController.text),
-      selectlocation,
-      selectpic,
+      selectpic = imageFile,
     );
     Navigator.of(context).pop();
   }
@@ -44,7 +42,7 @@ class _AddProd extends State<AddProd> {
     // ignore: invalid_use_of_visible_for_testing_member
     final pic = await picker.getImage(source: ImageSource.gallery);
     this.setState(() {
-      _imageFile = File(pic.path);
+      imageFile = File(pic.path);
     });
     Navigator.of(context).pop();
   }
@@ -53,7 +51,7 @@ class _AddProd extends State<AddProd> {
     // ignore: invalid_use_of_visible_for_testing_member
     final pic = await picker.getImage(source: ImageSource.camera);
     this.setState(() {
-      _imageFile = File(pic.path);
+      imageFile = File(pic.path);
     });
     Navigator.of(context).pop();
   }
@@ -129,18 +127,6 @@ class _AddProd extends State<AddProd> {
             SizedBox(
               height: 50,
             ),
-            TextField(
-              decoration: InputDecoration(
-                  filled: true,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    // borderSide: BorderSide.none,
-                  ),
-                  labelText: 'المنتوج',
-                  fillColor: Theme.of(context).primaryColor),
-              controller: titleController,
-              onSubmitted: (_) => submitData,
-            ),
             Container(
               height: 70,
               child: Row(
@@ -205,10 +191,10 @@ class _AddProd extends State<AddProd> {
               child: Row(
                 children: [
                   Expanded(
-                    child: _imageFile == null
+                    child: imageFile == null
                         ? Text('لم يتم اختيار أي صورة')
                         : Image.file(
-                            _imageFile,
+                            imageFile,
                             width: 100,
                             height: 100,
                           ),

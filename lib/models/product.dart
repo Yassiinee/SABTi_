@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 
 //enum Stock { Instock, Outstock }
@@ -5,10 +7,9 @@ import 'package:flutter/foundation.dart';
 class Product {
   final String id;
   final String title;
-  final String image;
+  final File image;
   final double quantite;
   final double prix;
-  final String location;
   //final Stock stock;
 
   const Product({
@@ -17,7 +18,6 @@ class Product {
     @required this.image,
     @required this.quantite,
     @required this.prix,
-    @required this.location,
     //@required this.stock,
   });
 }

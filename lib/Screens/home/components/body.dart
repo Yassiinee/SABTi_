@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sabti/Screens/home/components/events_special.dart';
 import 'package:sabti/constants.dart';
 
 import 'featurred_plants.dart';
@@ -18,7 +19,7 @@ class Body extends StatelessWidget {
         children: <Widget>[
           HeaderWithSearchBox(size: size),
           TitleWithMoreBtn(title: "أفرح معنا", press: () {}),
-          RecomendsPlants(),
+          EventsSpecial(),
           TitleWithMoreBtn(title: "اقتراحاتنا", press: () {}),
           RecomendsPlants(),
           TitleWithMoreBtn(title: "المزيد", press: () {}),

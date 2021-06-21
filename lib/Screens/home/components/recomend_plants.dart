@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sabti/Screens/detailsapple/details_screen.dart';
+import 'package:sabti/Screens/detailstomato/details_screen.dart';
 import 'package:sabti/screens/details/details_screen.dart';
 
 import '../../../constants.dart';
@@ -23,7 +25,7 @@ class RecomendsPlants extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => DetailsScreen(),
+                  builder: (context) => DetailsScreenTomato(),
                 ),
               );
             },
@@ -47,7 +49,14 @@ class RecomendsPlants extends StatelessWidget {
             title: "تفاح",
             country: "صفاقس",
             price: 4,
-            press: () {},
+            press: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DetailsScreenApple(),
+                ),
+              );
+            },
           ),
         ],
       ),

@@ -13,38 +13,40 @@ class RecomendsPlants extends StatelessWidget {
     return Container(
         height: 400,
         child: transaction.isEmpty
-            ? Column(
-                children: [
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    " فضاءالفلاح",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 50, color: Theme.of(context).primaryColor),
-                  ),
-                  Container(
-                    height: 200,
-                    child: Image.asset(
-                      'assets/images/planet-earth.png',
-                      fit: BoxFit.cover,
+            ? SingleChildScrollView(
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 20,
                     ),
-                  ),
-                  RoundedButton(
-                      text: "إضافة صابة",
-                      fontSize: 20.0,
-                      press: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return storeLocator();
-                            },
-                          ),
-                        );
-                      }),
-                ],
+                    Text(
+                      " فضاءالفلاح",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 50, color: Theme.of(context).primaryColor),
+                    ),
+                    Container(
+                      height: 200,
+                      child: Image.asset(
+                        'assets/images/planet-earth.png',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    RoundedButton(
+                        text: "إضافة صابة",
+                        fontSize: 20.0,
+                        press: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return storeLocator();
+                              },
+                            ),
+                          );
+                        }),
+                  ],
+                ),
               )
             : ListView.builder(
                 itemBuilder: (ctx, index) {
@@ -72,8 +74,8 @@ class RecomendsPlants extends StatelessWidget {
                                   topLeft: Radius.circular(15),
                                   topRight: Radius.circular(15),
                                 ),
-                                child: Image.asset(
-                                  'assets/images/tomate.png',
+                                child: Image.file(
+                                  transaction[index].image,
                                   height: 250,
                                   width: double.infinity,
                                   fit: BoxFit.cover,
@@ -103,13 +105,6 @@ class RecomendsPlants extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                Row(
-                                  children: [
-                                    Icon(Icons.location_on_outlined),
-                                    SizedBox(width: 6),
-                                    Text('${transaction[index].location}'),
-                                  ],
-                                ),
                                 Row(
                                   children: [
                                     Icon(Icons.queue),

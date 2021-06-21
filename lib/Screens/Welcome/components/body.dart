@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sabti/Screens/Login/login_screen.dart';
+import 'package:sabti/Screens/Signup/components/body.dart';
+import 'package:sabti/Screens/Signup/components/next.dart';
 import 'package:sabti/Screens/Signup/signup_screen.dart';
 import 'package:sabti/Screens/Welcome/components/background.dart';
 import 'package:sabti/components/rounded_button.dart';
@@ -51,7 +53,7 @@ class Body extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return SignUpScreen();
+                      return Next();
                     },
                   ),
                 );

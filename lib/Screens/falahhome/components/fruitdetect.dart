@@ -67,7 +67,9 @@ class _Fruitdetc extends State<Fruitdetc> {
           "\n\n";
       val = res["confidence"] as double;
       fruit = res["label"];
-      if (val > 1) {
+      if (val > 0.8) {
+        isWorking = true;
+        cameraController.initialize();
         Navigator.of(context).pop(fruit);
       }
     });
